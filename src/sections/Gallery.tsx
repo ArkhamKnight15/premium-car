@@ -29,21 +29,16 @@ export function Gallery() {
   return (
     <section id="resultados" aria-labelledby="resultados-title" className="bg-ink-900 py-24 sm:py-32 lg:py-40">
       <Container>
-        <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
-          <SectionHeading
-            id="resultados-title"
-            eyebrow="Resultados"
-            title={
-              <>
-                O brilho fala <span className="text-metal">por si.</span>
-              </>
-            }
-            subtitle="Pintura profunda, reflexos nítidos e acabamento uniforme: o padrão que buscamos em cada veículo."
-          />
-          <Reveal delay={120} as="div" className="text-xs leading-relaxed text-silver-500 lg:max-w-[16rem] lg:text-right">
-            Imagens meramente ilustrativas, de bancos de imagem.
-          </Reveal>
-        </div>
+        <SectionHeading
+          id="resultados-title"
+          eyebrow="Resultados"
+          title={
+            <>
+              O brilho fala <span className="text-metal">por si.</span>
+            </>
+          }
+          subtitle="Pintura profunda, reflexos nítidos e acabamento uniforme: o padrão que buscamos em cada veículo."
+        />
       </Container>
 
       <MobileCarousel onOpen={setOpenIndex} />

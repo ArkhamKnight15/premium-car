@@ -202,7 +202,6 @@ export function Footer() {
           <p>
             © {year} {site.name}. Todos os direitos reservados.
           </p>
-          <p>Fotografias meramente ilustrativas.</p>
           <a href="#inicio" className="inline-flex items-center gap-2 self-start transition-colors hover:text-snow sm:mr-20 sm:self-auto">
             Voltar ao topo
             <ArrowUp className="size-3.5" aria-hidden="true" />
