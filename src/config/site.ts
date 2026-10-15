@@ -12,6 +12,8 @@ interface SiteConfig {
   whatsapp: { number: string; display: string }
   phone: string
   address: string[]
+  /** Perfil da empresa no Google (mapa, rotas e avaliações). */
+  googleBusinessUrl: string
   /** `days` é opcional: sem ele, exibe apenas o horário. */
   hours: { days?: string; hours: string }[]
   social: Record<SocialNetwork, string>
@@ -32,8 +34,9 @@ export const site: SiteConfig = {
    * Vazio: o rodapé exibe o número do WhatsApp, que também recebe ligações.
    */
   phone: '',
-  /** Endereço, uma linha por item. PLACEHOLDER: bairro, cidade e CEP ainda não informados. */
-  address: ['Rua Doutor Crespo, 579'],
+  /** Endereço, uma linha por item. */
+  address: ['Rua Doutor Crespo, 579', 'Recreio dos Bandeirantes', 'Rio de Janeiro\u00a0– RJ', 'CEP 22790-670'],
+  googleBusinessUrl: 'https://share.google/E8jeVcJ9tfnzg9frn',
   /** Horários de atendimento. PLACEHOLDER: dias da semana ainda não informados. */
   hours: [{ hours: '8h às 18h' }],
 

@@ -96,13 +96,27 @@ export function Footer() {
               </ContactItem>
               <ContactItem icon={<MapPin className={iconClass} strokeWidth={1.5} />} label="Endereço">
                 {site.address.length > 0 ? (
-                  <address className="not-italic">
-                    {site.address.map((line) => (
-                      <span key={line} className="block">
-                        {line}
-                      </span>
-                    ))}
-                  </address>
+                  <>
+                    <address className="not-italic">
+                      {site.address.map((line, index) => (
+                        <span key={line} className={index === 0 ? 'block' : 'block text-silver-300'}>
+                          {line}
+                        </span>
+                      ))}
+                    </address>
+                    {site.googleBusinessUrl && (
+                      <a
+                        href={site.googleBusinessUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-2 inline-flex items-center gap-1.5 text-[0.8125rem] font-semibold text-brand-300 transition-colors hover:text-brand-100"
+                      >
+                        Como chegar
+                        <span className="sr-only"> (abre a página da Premium Car no Google)</span>
+                        <ArrowUpRight className="size-3.5" aria-hidden="true" />
+                      </a>
+                    )}
+                  </>
                 ) : (
                   <Pending />
                 )}
