@@ -28,7 +28,7 @@ Todos os dados da empresa ficam em **`src/config/site.ts`**:
 - Enquanto `whatsapp.number` estiver vazio, os botões abrem o WhatsApp com a mensagem pronta para o
   visitante escolher o contato, e o modo de desenvolvimento exibe um aviso no canto da tela.
 - As mensagens iniciais de cada botão estão em `src/config/messages.ts`.
-- No `index.html`, informe a URL final em `og:url` e use URL absoluta em `og:image`.
+- O domínio `premiumcarrj.com.br` está configurado no `index.html` (SEO e prévia de links), em `public/robots.txt` e em `public/sitemap.xml`. Se o domínio mudar, atualize esses três arquivos.
 
 ## Fotografias
 
