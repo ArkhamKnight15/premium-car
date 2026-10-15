@@ -20,6 +20,8 @@ interface SiteConfig {
    * https://developers.google.com/maps/documentation/places/web-service/place-id
    */
   googlePlaceId: string
+  /** Nota e total de avaliações no Google. Atualize de tempos em tempos; `null` oculta o destaque. */
+  googleRating: { value: number; count: number } | null
   /** `days` é opcional: sem ele, exibe apenas o horário. */
   hours: { days?: string; hours: string }[]
   social: Record<SocialNetwork, string>
@@ -44,6 +46,7 @@ export const site: SiteConfig = {
   address: ['Rua Doutor Crespo, 579', 'Recreio dos Bandeirantes', 'Rio de Janeiro\u00a0– RJ', 'CEP 22790-670'],
   googleBusinessUrl: 'https://share.google/E8jeVcJ9tfnzg9frn',
   googlePlaceId: 'ChIJhfLlIIDdmwARcM9Jt_UiQ2Y',
+  googleRating: { value: 4.9, count: 49 },
   /** Horários de atendimento. PLACEHOLDER: dias da semana ainda não informados. */
   hours: [{ hours: '8h às 18h' }],
 

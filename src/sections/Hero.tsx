@@ -1,10 +1,12 @@
-import { ArrowDown, ArrowUpRight } from 'lucide-react'
+import { ArrowDown, ArrowUpRight, Star } from 'lucide-react'
 import { whatsappMessages } from '../config/messages'
+import { site } from '../config/site'
 import { Button } from '../components/ui/Button'
 import { Container } from '../components/ui/Container'
 import { Picture } from '../components/ui/Picture'
 import { media } from '../data/media'
 import { services } from '../data/services'
+import { formatRating } from '../lib/google'
 import { enterDelay } from '../lib/motion'
 import { whatsappUrl } from '../lib/whatsapp'
 
@@ -60,6 +62,24 @@ export function Hero() {
               Solicite um orçamento
             </Button>
           </div>
+
+          {site.googleRating && (
+            <a
+              href="#avaliacoes"
+              className="enter mt-7 inline-flex items-center gap-3 text-sm text-silver-300 transition-colors hover:text-snow"
+              style={enterDelay(560)}
+            >
+              <span className="flex items-center gap-0.5 text-brand-400" aria-hidden="true">
+                {Array.from({ length: 5 }, (_, index) => (
+                  <Star key={index} className="size-3.5" fill="currentColor" strokeWidth={0} />
+                ))}
+              </span>
+              <span>
+                <strong className="font-semibold text-snow">{formatRating(site.googleRating.value)}</strong>
+                <span className="sr-only"> de 5 estrelas</span> · {site.googleRating.count} avaliações no Google
+              </span>
+            </a>
+          )}
         </div>
 
         <div

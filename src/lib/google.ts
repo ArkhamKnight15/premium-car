@@ -11,3 +11,8 @@ export const googleReviewsUrl = placeId
 export const googleWriteReviewUrl = placeId
   ? `https://search.google.com/local/writereview?placeid=${encodeURIComponent(placeId)}`
   : null
+
+/** Nota formatada em português: 4.9 → "4,9". */
+export function formatRating(value: number): string {
+  return value.toLocaleString('pt-BR', { minimumFractionDigits: 1, maximumFractionDigits: 1 })
+}

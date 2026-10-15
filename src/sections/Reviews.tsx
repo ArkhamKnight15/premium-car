@@ -6,7 +6,8 @@ import { Reveal } from '../components/ui/Reveal'
 import { SectionHeading } from '../components/ui/SectionHeading'
 import { reviews } from '../data/reviews'
 import { cn } from '../lib/cn'
-import { googleReviewsUrl, googleWriteReviewUrl } from '../lib/google'
+import { site } from '../config/site'
+import { formatRating, googleReviewsUrl, googleWriteReviewUrl } from '../lib/google'
 import { initials, shortName } from '../lib/names'
 import type { Review } from '../types'
 
@@ -41,7 +42,25 @@ export function Reviews() {
             }
             subtitle="O que nossos clientes dizem sobre a Premium Car no Google."
           />
-          <Reveal delay={120}>
+          <Reveal delay={120} className="flex flex-col gap-6 lg:items-end">
+            {site.googleRating && (
+              <a
+                href={googleReviewsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center gap-4 self-start rounded-2xl border border-white/[0.07] bg-ink-850/70 px-5 py-4 transition-colors hover:border-brand-400/30 lg:self-end"
+              >
+                <span className="font-display text-4xl leading-none font-semibold text-snow [font-stretch:112%]">
+                  {formatRating(site.googleRating.value)}
+                </span>
+                <span className="flex flex-col gap-1.5">
+                  <Stars className="size-4" label={`Nota ${formatRating(site.googleRating.value)} de 5`} />
+                  <span className="text-xs text-silver-400 transition-colors group-hover:text-snow">
+                    {site.googleRating.count} avaliações no Google
+                  </span>
+                </span>
+              </a>
+            )}
             <div className="flex flex-wrap gap-3 lg:justify-end">
               <Button href={googleReviewsUrl} external variant="outline" icon={<ArrowUpRight className="size-4" />}>
                 Ver todas no Google
