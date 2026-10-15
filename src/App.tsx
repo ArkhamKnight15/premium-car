@@ -7,6 +7,7 @@ import { Differentials } from './sections/Differentials'
 import { FinalCta } from './sections/FinalCta'
 import { Gallery } from './sections/Gallery'
 import { Hero } from './sections/Hero'
+import { Reviews } from './sections/Reviews'
 import { Services } from './sections/Services'
 
 export default function App() {
@@ -24,6 +25,7 @@ export default function App() {
         <Services />
         <Differentials />
         <Gallery />
+        <Reviews />
         <About />
         <FinalCta />
       </main>

@@ -35,3 +35,12 @@ export interface GalleryItem {
   /** Foto do "antes" — informe quando houver registros reais do serviço. */
   before?: Photo
 }
+
+export interface Review {
+  /** Nome como aparece no Google (exibido como primeiro nome + inicial do sobrenome). */
+  author: string
+  rating: 1 | 2 | 3 | 4 | 5
+  text: string
+  /** Autor com selo "Local Guide" no Google Maps. */
+  localGuide?: boolean
+}

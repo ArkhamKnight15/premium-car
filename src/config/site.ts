@@ -14,6 +14,12 @@ interface SiteConfig {
   address: string[]
   /** Perfil da empresa no Google (mapa, rotas e avaliações). */
   googleBusinessUrl: string
+  /**
+   * PLACEHOLDER — Place ID do Google (ex.: 'ChIJ...'). Com ele, os botões abrem direto a lista
+   * de avaliações e a tela de avaliar. Encontre em
+   * https://developers.google.com/maps/documentation/places/web-service/place-id
+   */
+  googlePlaceId: string
   /** `days` é opcional: sem ele, exibe apenas o horário. */
   hours: { days?: string; hours: string }[]
   social: Record<SocialNetwork, string>
@@ -37,6 +43,7 @@ export const site: SiteConfig = {
   /** Endereço, uma linha por item. */
   address: ['Rua Doutor Crespo, 579', 'Recreio dos Bandeirantes', 'Rio de Janeiro\u00a0– RJ', 'CEP 22790-670'],
   googleBusinessUrl: 'https://share.google/E8jeVcJ9tfnzg9frn',
+  googlePlaceId: '',
   /** Horários de atendimento. PLACEHOLDER: dias da semana ainda não informados. */
   hours: [{ hours: '8h às 18h' }],
 
