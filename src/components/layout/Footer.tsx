@@ -33,7 +33,14 @@ function ContactItem({ icon, label, children }: { icon: ReactNode; label: string
   )
 }
 
-const socialNetworks = Object.keys(site.social) as SocialNetwork[]
+/** Apenas as redes com perfil informado em `src/config/site.ts`. */
+const socialNetworks = (Object.keys(site.social) as SocialNetwork[]).filter((network) => site.social[network])
+
+/** "https://www.instagram.com/premiumcarrj/" → "@premiumcarrj". */
+function socialHandle(url: string): string {
+  const path = new URL(url).pathname.split('/').filter(Boolean)[0]
+  return path ? `@${path}` : new URL(url).hostname
+}
 const iconClass = 'size-[1.125rem]'
 const year = new Date().getFullYear()
 
@@ -127,7 +134,8 @@ export function Footer() {
                     <span key={`${slot.days}-${slot.hours}`} className="block">
                       {slot.days ? (
                         <>
-                          {slot.days}: <span className="text-silver-300">{slot.hours}</span>
+                          {slot.days}
+                          <span className="block text-silver-300">{slot.hours}</span>
                         </>
                       ) : (
                         slot.hours
@@ -141,7 +149,7 @@ export function Footer() {
             </dl>
           </Reveal>
 
-          <Reveal delay={160} className="grid grid-cols-2 gap-8 lg:col-span-3">
+          <Reveal delay={160} className="grid grid-cols-2 gap-8 lg:col-span-3 lg:grid-cols-1">
             <nav aria-label="Atalhos do rodapé">
               <p className="text-[0.6875rem] font-semibold tracking-[0.2em] text-silver-500 uppercase">Navegação</p>
               <ul className="mt-4 flex flex-col gap-1">
@@ -158,40 +166,33 @@ export function Footer() {
               </ul>
             </nav>
 
-            <div>
-              <p className="text-[0.6875rem] font-semibold tracking-[0.2em] text-silver-500 uppercase">Redes sociais</p>
-              <ul className="mt-5 flex flex-wrap gap-1.5">
-                {socialNetworks.map((network) => {
-                  const { label, Icon } = socialIcons[network]
-                  const href = site.social[network]
-                  const shared = 'grid size-10 place-items-center rounded-full border'
-                  return (
-                    <li key={network}>
-                      {href ? (
+            {socialNetworks.length > 0 && (
+              <div>
+                <p className="text-[0.6875rem] font-semibold tracking-[0.2em] text-silver-500 uppercase">Redes sociais</p>
+                <ul className="mt-4 flex flex-col gap-2">
+                  {socialNetworks.map((network) => {
+                    const { label, Icon } = socialIcons[network]
+                    const href = site.social[network]
+                    return (
+                      <li key={network}>
                         <a
                           href={href}
                           target="_blank"
                           rel="noopener noreferrer"
-                          aria-label={`${label} da Premium Car`}
-                          className={`${shared} border-white/15 text-snow transition-colors hover:border-brand-400/50 hover:text-brand-200`}
+                          aria-label={`${label} da Premium Car: ${socialHandle(href)}`}
+                          className="group inline-flex items-center gap-3 py-1 text-[0.9375rem] text-silver-300 transition-colors hover:text-brand-200"
                         >
-                          <Icon className={iconClass} />
+                          <span className="grid size-10 place-items-center rounded-full border border-white/15 text-snow transition-colors group-hover:border-brand-400/50 group-hover:text-brand-200">
+                            <Icon className={iconClass} />
+                          </span>
+                          {socialHandle(href)}
                         </a>
-                      ) : (
-                        <span
-                          role="img"
-                          aria-label={`${label}: perfil a definir`}
-                          title={`${label}: perfil a definir`}
-                          className={`${shared} border-dashed border-white/15 text-silver-500`}
-                        >
-                          <Icon className={iconClass} />
-                        </span>
-                      )}
-                    </li>
-                  )
-                })}
-              </ul>
-            </div>
+                      </li>
+                    )
+                  })}
+                </ul>
+              </div>
+            )}
           </Reveal>
         </div>
       </Container>

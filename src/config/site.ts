@@ -47,12 +47,12 @@ export const site: SiteConfig = {
   googleBusinessUrl: 'https://share.google/E8jeVcJ9tfnzg9frn',
   googlePlaceId: 'ChIJhfLlIIDdmwARcM9Jt_UiQ2Y',
   googleRating: { value: 4.9, count: 49 },
-  /** Horários de atendimento. PLACEHOLDER: dias da semana ainda não informados. */
-  hours: [{ hours: '8h às 18h' }],
+  /** Horários de atendimento. */
+  hours: [{ days: 'Segunda a sábado', hours: '8h às 18h' }],
 
-  /** PLACEHOLDER — informe a URL completa de cada perfil (ex.: 'https://instagram.com/seuperfil'). */
+  /** URL completa de cada perfil. Redes vazias não aparecem no site. */
   social: {
-    instagram: '',
+    instagram: 'https://www.instagram.com/premiumcarrj/',
     facebook: '',
     youtube: '',
   },
